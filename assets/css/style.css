@@ -1,0 +1,5230 @@
+
+/* SECTION 1 : STYLES GÉNÉRAUX ET BASE*/
+
+/* Reset universel - Supprime tous les styles par défaut du navigateur */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Configuration du corps de la page */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: #1a1a1a;
+    background-color: #f5f5f7;
+    font-size: 16px;
+}
+
+/* Container principal - Limite la largeur et centre le contenu */
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+
+/* SECTION 2 : HEADER / EN-TÊTE*/
+
+header {
+    background-color: #ffffff;
+    border-top: none;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+
+header .container {
+    display: flex !important;
+    flex-direction: row !important; 
+    flex-wrap: nowrap !important;   
+    justify-content: space-between;
+    align-items: center !important;
+    gap: 2rem;
+}
+
+/* Logo Fashion Shop */
+header h1 {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    color: #ff6e14 !important;
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin: 0;
+    text-transform: none;
+    white-space: nowrap !important;
+    flex-shrink: 0; 
+}
+
+header h1 * {
+    display: inline !important;
+}
+
+header h1 svg,
+header h1 i {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 32px !important;
+    flex-shrink: 0;
+    color: #ff6e14;
+}
+
+
+nav {
+    display: flex !important;
+    align-items: center !important;
+    flex-shrink: 0;
+}
+
+nav ul {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;   
+    align-items: center;
+    gap: 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    white-space: nowrap; 
+}
+
+.nav-search-form {
+    display: flex !important;
+    align-items: center;
+    flex-shrink: 0; /* ✅ Ne rétrécit pas */
+}
+
+
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column !important;
+        flex-wrap: wrap !important;
+    }
+}
+
+header h1 a.logo-link,
+header h1 a.logo-link:link,
+header h1 a.logo-link:visited,
+header h1 a.logo-link:active,
+header h1 a.logo-link:hover {
+    color: #ff6e14 !important;      
+    text-decoration: none !important; 
+    display: flex !important;       
+    align-items: center !important;
+}
+
+
+header h1 a.logo-link svg {
+    color: #ff6e14 !important;
+    fill: none; 
+}
+
+header h1 a.logo-link:hover {
+    opacity: 0.8;
+}
+
+/*  SECTION 3 : NAVIGATION*/
+
+/* Liste de navigation - Flexbox horizontal */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+/* Items de navigation */
+nav li {
+    position: relative;
+}
+
+/* Liens de navigation - Style par défaut */
+nav a {
+    color: #333 !important;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 15px;
+    transition: color 0.2s ease-in-out;
+    white-space: nowrap;
+}
+
+/* Effet au survol - Passage à l'orange Fashion Shop */
+nav a:hover {
+    color: #ff6e14 !important;
+    background-color: transparent;
+}
+
+/* Effet au survol des icônes (panier, utilisateur, etc.) */
+.icons i:hover {
+    color: #ff6e14;
+    cursor: pointer;
+}
+
+/* 3.1 - BADGE DU PANIer*/
+
+.cart-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #ff3b30;
+    color: white;
+    border-radius: 12px;
+    padding: 2px 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    min-width: 20px;
+    text-align: center;
+}
+
+
+/*  SECTION 4 : MESSAGES FLASH / ALERTES
+   
+
+/* Container de base pour tous les messages */
+.alert {
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 12px;
+    font-weight: 500;
+    border-left: 4px solid;
+}
+
+/* Message de succès - Fond et texte verts */
+.alert-success {
+    background-color: #d1f4e0;
+    color: #0a6c3c;
+    border-left-color: #0a6c3c;
+}
+
+/* Message d'erreur - Fond et texte rouges */
+.alert-error {
+    background-color: #ffe5e5;
+    color: #c41e3a;
+    border-left-color: #c41e3a;
+}
+
+/* Message d'information - Fond et texte bleus */
+.alert-info {
+    background-color: #e3f2fd;
+    color: #01579b;
+    border-left-color: #01579b;
+}
+
+
+/*SECTION 5 : BOUTONS
+   
+/* Style de base pour tous les boutons */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.75rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* 5.1 - BOUTON PRIMARY (PRINCIPAL)*/
+
+.btn-primary {
+    background-color: orangered !important;
+    background: orangered !important;
+    color: #000000 !important;
+    border: none !important;
+    padding: 1.2rem 3rem;
+    font-weight: 700;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+/* Effet au survol - Passe en gris clair et grossit */
+.btn-primary:hover {
+    background-color: #f0f0f0 !important;
+    transform: scale(1.05);
+    color: #000000 !important;
+}
+
+/* 5.2 - BOUTONS SECONDAIRES ET UTILITAIRES
+
+/* Bouton secondaire - Gris neutre */
+.btn-secondary {
+    background-color: #e9ecef;
+    color: #495057;
+}
+
+.btn-secondary:hover {
+    background-color: #dee2e6;
+}
+
+/* Bouton danger - Rouge pour actions destructives (supprimer, annuler) */
+.btn-danger {
+    background-color: #ff3b30;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #e6342a;
+}
+
+/* Bouton success - Vert pour actions positives (valider, confirmer) */
+.btn-success {
+    background-color: #34c759;
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #2fb350;
+}
+
+
+/* SECTION 6 : FORMULAIRES
+
+
+/* Groupe de champ (label + input/textarea/select) */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+/* Labels des champs de formulaire */
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    font-size: 0.95rem;
+}
+
+/* Champs de saisie (input, textarea, select) */
+.form-control {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    background: white;
+}
+
+/* État focus - Bordure violette avec ombre douce */
+.form-control:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+}
+
+/* Zone de texte (textarea) - Redimensionnement vertical uniquement */
+textarea.form-control {
+    resize: vertical;
+    min-height: 120px;
+}
+
+
+/* SECTION 7 : CARTES PRODUITS (DESIGN PRINCIPAL)
+ 
+7.1 - CONTAINER DE LA CARTE*/
+
+.card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+    border: 1px solid #f0f0f0;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+    position: relative;
+}
+
+/* 7.2 - IMAGE DU PRODUIT ( */
+
+.card-img-container {
+    height: 350px;
+    width: 100%;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    overflow: hidden;
+    position: relative;
+}
+
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+/* Désactivation du zoom au survol (effet trop agressif) */
+.card:hover .card-img {
+    transform: none !important;
+}
+
+/* Overlay transparent sur l'image (actuellement désactivé) */
+.card-img-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent !important;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.card:hover .card-img-container::after {
+    opacity: 0 !important;
+}
+
+/*7.3 - BADGE "NOUVEAU" OU "PROMO" */
+
+.card-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: linear-gradient(135deg, #ff6e14 0%, #ff3b30 100%);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(255, 110, 20, 0.4);
+    animation: pulse 2s infinite;
+}
+
+/* Animation pulse - Effet de battement */
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* 7.4 - CORPS DE LA CARTE (TEXTE COMPACT) */
+
+.card-body {
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 0.35rem;
+    position: relative;
+    z-index: 2;
+}
+
+/* 7.5 - TITRE PRODUIT (PETIT ET COMPACT)*/
+
+.card-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    min-height: auto;
+    margin-bottom: 0.2rem;
+    transition: color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    line-height: 1.2;
+}
+
+/* Titre devient orange au survol de la carte */
+.card:hover .card-title {
+    color: #ff6e14;
+}
+
+/* Ligne animée sous le titre (actuellement invisible) */
+.card-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #ff6e14 0%, #ff3b30 100%);
+    transition: width 0.4s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* 7.6 - DESCRIPTION PRODUIT (1 LIGNE SEULEMENT) */
+
+.card-text {
+    font-size: 0.8rem;
+    color: #666;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+    margin-bottom: 0.2rem;
+}
+
+/* Description devient plus visible au survol */
+.card:hover .card-text {
+    opacity: 1;
+}
+
+/* 7.7 - PRIX PRODUIT (DÉGRADÉ ORANGE ANIMÉ)*/
+
+.card-price {
+    font-size: 1.2rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, #ff6e14 0%, #ff3b30 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-top: auto;
+    margin-bottom: 0.4rem;
+    position: relative;
+    animation: priceGlow 3s ease-in-out infinite;
+}
+
+/* Animation de pulsation lumineuse du prix */
+@keyframes priceGlow {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.2); }
+}
+
+/* Effet de brillance qui traverse le prix au survol */
+.card-price::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s;
+}
+
+.card:hover .card-price::before {
+    left: 100%;
+}
+
+/* 7.8 - BADGE STOCK (DISPONIBLE / RUPTURE)*/
+
+.card-stock {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    width: fit-content;
+    margin-bottom: 0.4rem;
+    animation: fadeInUp 0.6s ease;
+}
+
+/* Badge vert pour stock disponible */
+.card-stock.disponible {
+    background: linear-gradient(135deg, #34c759 0%, #2fb350 100%);
+    color: white;
+    box-shadow: 0 2px 8px rgba(52, 199, 89, 0.3);
+}
+
+/* Badge rouge pour rupture de stock */
+.card-stock.rupture {
+    background: linear-gradient(135deg, #ff3b30 0%, #e6342a 100%);
+    color: white;
+    box-shadow: 0 2px 8px rgba(255, 59, 48, 0.3);
+}
+
+/* Point pulsant devant le texte (● Disponible / ● Rupture) */
+.card-stock::before {
+    content: '●';
+    animation: stockPulse 2s infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Animation du point de stock */
+@keyframes stockPulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.6;
+        transform: scale(1.2);
+    }
+}
+
+/* 7.9 - BOUTONS D'ACTION (VOIR PRODUIT + AJOUTER AU PANIER */
+
+/* Container des boutons - Séparé du contenu par une bordure */
+.card-actions {
+    display: flex;
+    gap: 8px;
+    padding-top: 8px;
+    border-top: 1px solid #f0f0f0;
+    margin-top: auto;
+}
+
+/* Style de base pour tous les boutons d'action */
+.card-actions .btn {
+    flex: 1;
+    padding: 0.65rem 0.5rem;
+    font-size: 0.8rem;
+    border-radius: 12px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Bouton "Voir le produit" - Orange dégradé */
+.card-actions .btn-primary {
+    background: linear-gradient(135deg, #ff6e14 0%, #ff3b30 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 110, 20, 0.4);
+}
+
+/* Effet d'élévation au survol */
+.card-actions .btn-primary:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(255, 110, 20, 0.6);
+}
+
+/* Effet de vague au clic - Cercle blanc qui s'étend */
+.card-actions .btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.card-actions .btn:active::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Bouton "Ajouter au panier" - Vert dégradé */
+.card-actions .btn-success {
+    background: linear-gradient(135deg, #34c759 0%, #2fb350 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(52, 199, 89, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.card-actions .btn-success:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(52, 199, 89, 0.6);
+}
+
+/* Animation de l'icône panier au survol - Secoue légèrement */
+.card-actions .btn-success:hover i {
+    animation: cartShake 0.5s ease;
+}
+
+@keyframes cartShake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* 7.10 - ANIMATIONS GLOBALES DE LA CARTE */
+
+/* Animation d'apparition au chargement de la page */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Application de l'animation à toutes les cartes */
+.card {
+    animation: fadeInUp 0.6s ease;
+}
+
+/* Effet de particules (actuellement désactivé) */
+.card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,110,20,0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.card:hover::before {
+    opacity: 0 !important;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* 7.11 - RESPONSIVE MOBILE POUR LES CARTES*/
+
+/* Tablettes et mobiles (< 768px) */
+@media (max-width: 768px) {
+    .card {
+        border-radius: 12px;
+    }
+    
+    /* Désactivation du transform au survol sur mobile */
+    .card:hover {
+        transform: none !important;
+    }
+    
+    /* Image plus petite sur mobile */
+    .card-img-container {
+        height: 160px;
+    }
+    
+    /* Padding et espacement réduits */
+    .card-body {
+        padding: 0.5rem;
+        gap: 0.2rem;
+    }
+    
+    /* Titre plus petit */
+    .card-title {
+        font-size: 0.9rem;
+        margin-bottom: 0;
+    }
+    
+    /* Description cachée sur mobile */
+    .card-text {
+        display: none;
+    }
+    
+    /* Prix réduit */
+    .card-price {
+        font-size: 1.1rem;
+        margin-bottom: 0.2rem;
+    }
+    
+    /* Badge stock plus compact */
+    .card-stock {
+        padding: 3px 10px;
+        font-size: 0.75rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    /* Boutons plus petits */
+    .card-actions {
+        gap: 8px;
+        margin-top: 5px;
+    }
+    
+    .card-actions .btn {
+        padding: 0.4rem;
+        font-size: 0.6rem;
+    }
+}
+
+/* Très petits mobiles (< 480px) */
+@media (max-width: 480px) {
+    .card-img-container {
+        height: 200px;
+    }
+    
+    /* Boutons empilés verticalement */
+    .card-actions {
+        flex-direction: column;
+    }
+    
+    .card-actions .btn {
+        width: 100%;
+    }
+}
+
+
+/* SECTION 8 : GRILLE DE PRODUITS & FILTRES
+ */
+
+/* 8.1 - GRILLE DE PRODUITS AUTO-ADAPTATIVE */
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+/*  8.2 - BOUTONS DE FILTRES PAR CATÉGORIE (STYLE PASTILLE) */
+
+/* État par défaut - Gris clair */
+.category-filters .btn {
+    background-color: #f0f0f2 !important;
+    color: #333 !important;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    border: none;
+    outline: none;
+}
+
+/* Au survol - Devient orange */
+.category-filters .btn:hover {
+    background-color: #ff6e14 !important;
+    color: white !important;
+    transform: translateY(-2px);
+}
+
+/* Après le clic - Retour au gris (si pas .active) */
+.category-filters .btn:focus:not(.active) {
+    background-color: #f0f0f2 !important;
+    color: #333 !important;
+    box-shadow: none !important;
+}
+
+/* État actif (sélectionné) - Orange permanent */
+.category-filters .btn.active {
+    background-color: #ff6e14 !important;
+    color: white !important;
+    box-shadow: 0 4px 10px rgba(255, 110, 20, 0.3) !important;
+}
+
+
+/*  SECTION 9 : PAGE D'ACCUEIL / HERO */
+
+.hero-section {
+    background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+    color: #ffffff;
+    padding: 6rem 2rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    border-radius: 12px;
+    border: 1px solid #333;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Titre principal - Orange vif et imposant */
+.hero-section h2 {
+    color: #ff6e14 !important; 
+    font-size: 3.2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Sous-titre - Gris clair pour contraste doux */
+.hero-section p {
+    color: #cccccc !important;
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+    font-weight: 400;
+}
+
+
+/* SECTION 10 : SECTION PRINCIPALE*/
+
+main {
+    min-height: calc(100vh - 200px);
+    padding: 2rem 0 4rem;
+}
+
+/* Titre de page centré */
+.page-title {
+    text-align: center;
+    color: #1a1a1a;
+    margin: 2.5rem 0;
+    font-size: 2.25rem;
+    font-weight: 700;
+}
+
+
+/*SECTION 11 : PANIER / CART*/
+
+.cart-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem 24px;
+}
+
+.cart-header {
+    color: #1a1a1a;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+/* Layout grid : Liste à gauche (flex: 1) + Résumé à droite (380px) */
+.cart-grid {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 2rem;
+}
+
+/*  11.1 - ARTICLE DU PANIER */
+
+.cart-item {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 1.5rem;
+    border: 1px solid #f0f0f0;
+}
+
+.cart-item:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.cart-item-image {
+    flex-shrink: 0;
+    width: 120px;
+    height: 120px;
+}
+
+.cart-item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.cart-item-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-item-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
+}
+
+.cart-item-price {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #667eea;
+}
+
+/* 11.2 - RÉSUMÉ DU PANIER (STICKY)*/
+
+.cart-summary {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 100px;
+    border: 1px solid #f0f0f0;
+}
+
+.cart-summary-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #f5f5f7;
+}
+
+.cart-total-amount {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #667eea;
+}
+
+
+/* SECTION 12 : ADMIN DASHBOARD */
+
+.admin-container {
+    max-width: 1280px;
+    margin: 2rem auto;
+    padding: 0 24px;
+}
+
+/* Grid de cartes admin (statistiques, etc.) */
+.admin-dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+/* Carte de statistique individuelle */
+.admin-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    text-align: center;
+    border: 1px solid #f0f0f0;
+}
+
+/* Tableau admin */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.admin-table th {
+    background: #f8f9fa;
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.admin-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #f5f5f7;
+}
+
+/* ✅ Alignement du logo dans l'administration - IDENTIQUE AU HEADER */
+.admin-header h1, 
+.admin-container h1 {
+    display: flex !important;
+    align-items: center !important; /* ✅ Alignement parfait */
+    gap: 12px !important;
+    color: #ff6e14 !important;
+    font-size: 1.6rem;
+    font-weight: 800;
+}
+
+/* Taille de l'icône uniforme */
+.admin-header h1 svg, 
+.admin-container h1 svg,
+.admin-header h1 i,
+.admin-container h1 i {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 32px !important;
+    flex-shrink: 0;
+}
+
+
+
+/* SECTION 13 : PAGE DE DÉTAIL PRODUIT */
+
+.product-detail {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    background: white;
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    margin-top: 2rem;
+}
+
+.product-detail img {
+    width: 100%;
+    border-radius: 12px;
+}
+
+
+/* SECTION 14 : PAGE QUI SOMMES-NOUS*/
+
+.about-container {
+    background: white;
+    padding: 3rem;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    max-width: 900px;
+    margin: 2rem auto;
+}
+
+.about-title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.value-card {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.value-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+
+/* SECTION 15 : FOOTER / PIED DE PAGE */
+
+.footer {
+    background-color: #1A1A1A !important;
+    color: #FFFFFF !important;
+    padding: 4rem 0 1.5rem;
+    margin-top: 4rem;
+    border-top: 3px solid #FFFFFF;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 4rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer h3,
+.footer-section h3 {
+    color: #FFFFFF !important;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.footer h4,
+.footer-section h4 {
+    color: #FFFFFF !important;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+}
+
+.footer p,
+.footer-section p {
+    color: #FFFFFF !important;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+.social-links {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 1rem !important;
+}
+
+.social-links a {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 44px !important;
+    height: 44px !important;
+}
+
+.social-links a:hover {
+    background-color: #FF6600 !important;
+    border-color: #FF6600 !important;
+    color: #FFFFFF !important;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(255, 102, 0, 0.4);
+}
+
+.social-links a i {
+    color: #FFFFFF !important;
+}
+
+.footer ul,
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer ul li,
+.footer-section ul li {
+    margin-bottom: 0.85rem;
+}
+
+/* Tous les liens en blanc - Règle universelle avec !important */
+.footer a,
+.footer a:link,
+.footer a:visited,
+.footer a:active,
+.footer-section a,
+.footer-section a:link,
+.footer-section a:visited,
+.footer-section a:active,
+.footer ul a,
+.footer ul a:link,
+.footer ul a:visited,
+.footer ul a:active,
+.footer-section ul a,
+.footer-section ul a:link,
+.footer-section ul a:visited,
+.footer-section ul a:active,
+.footer-section ul li a,
+.footer-section ul li a:link,
+.footer-section ul li a:visited,
+.footer-section ul li a:active {
+    color: #FFFFFF !important;
+    text-decoration: none !important;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    display: inline-block;
+    position: relative;
+}
+
+.footer-section ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #FF6600;
+    transition: width 0.3s ease;
+}
+
+.footer a:hover,
+.footer-section a:hover,
+.footer ul a:hover,
+.footer-section ul a:hover,
+.footer-section ul li a:hover {
+    color: #FF6600 !important;
+    padding-left: 5px;
+}
+
+.footer-section ul li a:hover::after {
+    width: 100%;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+}
+
+.footer-bottom p,
+.footer-bottom * {
+    color: #FFFFFF !important;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* ========================================================================
+   CORRECTIF RESPONSIVE MOBILE - FASHION SHOP
+   À ajouter à la fin de style.css ou créer un fichier responsive-fix.css
+   ======================================================================== */
+
+/* ═══════════════════════════════════════════════════════════════════════
+   CORRECTION HEADER MOBILE (PRIORITÉ ABSOLUE)
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* Force le header en mode colonne sur mobile */
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column !important;
+        flex-wrap: wrap !important;
+        align-items: center !important;
+        gap: 1rem !important;
+        padding: 15px !important;
+    }
+    
+    /* Logo centré et plus petit */
+    header h1 {
+        font-size: 1.4rem !important;
+        margin-bottom: 0.5rem !important;
+        text-align: center !important;
+        width: 100% !important;
+    }
+    
+    header h1 svg,
+    header h1 i {
+        width: 28px !important;
+        height: 28px !important;
+        font-size: 28px !important;
+    }
+    
+    /* Barre de recherche pleine largeur */
+    .nav-search-item {
+        width: 100% !important;
+        order: -1 !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .nav-search-form {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    
+    .nav-search-input {
+        width: 100% !important;
+        flex: 1 !important;
+    }
+    
+    /* Navigation verticale centrée */
+    nav {
+        width: 100% !important;
+    }
+    
+    nav ul {
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        gap: 0.5rem !important;
+    }
+    
+    nav li {
+        width: 100% !important;
+        text-align: center !important;
+    }
+    
+    nav a {
+        display: block !important;
+        width: 100% !important;
+        text-align: center !important;
+        padding: 0.75rem 1rem !important;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   HERO SECTION MOBILE
+   ═══════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 3rem 1.5rem !important;
+        margin-bottom: 2rem !important;
+    }
+    
+    .hero-section h2 {
+        font-size: 1.8rem !important;
+        line-height: 1.2 !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .hero-section p {
+        font-size: 1rem !important;
+        margin-bottom: 2rem !important;
+    }
+    
+    .btn-primary {
+        padding: 1rem 2rem !important;
+        font-size: 0.95rem !important;
+        width: 100% !important;
+        max-width: 300px !important;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   GRILLE DE PRODUITS MOBILE
+   ═══════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1rem !important;
+        padding: 0 0.5rem !important;
+    }
+    
+    /* Cartes produits adaptées */
+    .card {
+        border-radius: 12px !important;
+    }
+    
+    .card-img-container {
+        height: 180px !important;
+    }
+    
+    .card-body {
+        padding: 0.75rem !important;
+        gap: 0.5rem !important;
+    }
+    
+    .card-title {
+        font-size: 0.9rem !important;
+        line-height: 1.3 !important;
+        margin-bottom: 0.3rem !important;
+    }
+    
+    .card-text {
+        display: none !important;
+    }
+    
+    .card-price {
+        font-size: 1.1rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .card-stock {
+        font-size: 0.75rem !important;
+        padding: 4px 8px !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .card-actions {
+        flex-direction: column !important;
+        gap: 0.5rem !important;
+        padding-top: 0.5rem !important;
+    }
+    
+    .card-actions .btn {
+        width: 100% !important;
+        padding: 0.6rem !important;
+        font-size: 0.8rem !important;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   TRÈS PETITS MOBILES (< 480px)
+   ═══════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 480px) {
+    /* Header ultra compact */
+    header h1 {
+        font-size: 1.2rem !important;
+    }
+    
+    header h1 svg,
+    header h1 i {
+        width: 24px !important;
+        height: 24px !important;
+        font-size: 24px !important;
+    }
+    
+    /* Hero ultra compact */
+    .hero-section {
+        padding: 2rem 1rem !important;
+    }
+    
+    .hero-section h2 {
+        font-size: 1.5rem !important;
+    }
+    
+    .hero-section p {
+        font-size: 0.9rem !important;
+    }
+    
+    /* Grille produits 1 colonne */
+    .products-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+    
+    .card-img-container {
+        height: 220px !important;
+    }
+    
+    /* Container général */
+    .container {
+        padding: 0 1rem !important;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   SECTION BÉNÉFICES MOBILE
+   ═══════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+    .home-benefits-section {
+        padding: 2rem 1rem !important;
+        margin-top: 2rem !important;
+    }
+    
+    .benefits-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+    
+    .benefit-card {
+        padding: 1.5rem 1rem !important;
+    }
+    
+    .benefit-icon-emoji {
+        font-size: 3rem !important;
+    }
+    
+    .benefit-title {
+        font-size: 1.1rem !important;
+    }
+    
+    .benefit-text {
+        font-size: 0.9rem !important;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   FOOTER MOBILE
+   ═══════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 2rem 0 1rem !important;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+        padding: 0 1rem !important;
+    }
+    
+    .footer-section {
+        text-align: center !important;
+    }
+    
+    .footer h3,
+    .footer h4 {
+        font-size: 1.2rem !important;
+    }
+    
+    .social-links {
+        justify-content: center !important;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   CORRECTION DES DÉBORDEMENTS
+   ═══════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+    /* Empêche le débordement horizontal */
+    body {
+        overflow-x: hidden !important;
+    }
+    
+    /* Container ne doit pas déborder */
+    .container {
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+    }
+    
+    /* Hero ne doit pas déborder */
+    .hero-section {
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+    }
+    
+    /* Tous les éléments larges */
+    * {
+        max-width: 100vw !important;
+    }
+    
+    /* Images */
+    img {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   PAGE TITLE RESPONSIVE
+   ═══════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 1.5rem !important;
+        margin: 1.5rem 0 !important;
+        padding: 0 1rem !important;
+        text-align: center !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-title {
+        font-size: 1.3rem !important;
+        margin: 1rem 0 !important;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   FILTRES CATÉGORIES MOBILE
+   ═══════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+    .category-filters {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 0.5rem !important;
+        justify-content: center !important;
+        padding: 0 1rem !important;
+    }
+    
+    .category-filters .btn {
+        font-size: 0.85rem !important;
+        padding: 0.6rem 1rem !important;
+        white-space: nowrap !important;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   RECHERCHE MOBILE
+   ═══════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+    .search-form-container {
+        padding: 0 1rem !important;
+        margin: 1.5rem auto !important;
+    }
+    
+    .search-form-page {
+        flex-direction: column !important;
+        border-radius: 16px !important;
+        padding: 0.75rem !important;
+    }
+    
+    .search-input-page {
+        padding: 0.75rem 1rem !important;
+        border-radius: 12px !important;
+        width: 100% !important;
+    }
+    
+    .search-btn-page {
+        padding: 0.75rem 1.5rem !important;
+        border-radius: 12px !important;
+        width: 100% !important;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   RESPONSIVE VIEWPORT FIX
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* Force le viewport mobile */
+html {
+    -webkit-text-size-adjust: 100% !important;
+    -ms-text-size-adjust: 100% !important;
+}
+
+@media (max-width: 768px) {
+    html, body {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   DEBUG - BORDURES ROUGES TEMPORAIRES (À RETIRER APRÈS TEST)
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* DÉCOMMENTER POUR DÉBUGGER LE RESPONSIVE */
+/*
+@media (max-width: 768px) {
+    * {
+        outline: 1px solid red !important;
+    }
+    
+    header .container {
+        outline: 3px solid blue !important;
+    }
+    
+    nav ul {
+        outline: 3px solid green !important;
+    }
+}
+*/
+
+
+/* SECTION 17 : POLITIQUE DE CONFIDENTIALITÉ */
+
+.privacy-policy-container {
+    max-width: 900px;
+    margin: 3rem auto;
+    background: white;
+    padding: 3rem;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.privacy-section-title {
+    color: #667eea;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 2rem 0 1rem;
+}
+
+.privacy-rights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.privacy-right-card {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.privacy-right-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 768px) {
+    .privacy-policy-container {
+        padding: 2rem 1.5rem;
+        margin: 1.5rem;
+    }
+    
+    .privacy-rights-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* SECTION 18 : RECHERCHE HEADER*/
+
+.nav-search-item {
+    display: flex;
+    align-items: center;
+}
+
+.nav-search-form {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    background: #ffffff;
+    overflow: hidden;
+    margin-left: 20px;
+}
+
+.nav-search-input {
+    border: none !important;
+    background: #ffffff !important;
+    color: #333333 !important;
+    padding: 8px 15px !important;
+    width: 250px !important;
+    outline: none;
+}
+
+.nav-search-input::placeholder {
+    color: #adb5bd !important;
+}
+
+.nav-search-input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.6);
+    width: 250px;
+}
+
+.nav-search-btn {
+    background-color: #ff6e14 !important;
+    border: none !important;
+    color: white !important;
+    width: 45px !important;
+    height: 38px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.nav-search-btn:hover {
+    background-color: #e65c00 !important;
+}
+
+@media (max-width: 768px) {
+    .nav-search-item {
+        width: 100%;
+        order: -1;
+        margin-bottom: 1rem;
+    }
+    
+    .nav-search-form {
+        width: 100%;
+    }
+    
+    .nav-search-input {
+        flex: 1;
+        width: 100%;
+    }
+    
+    .nav-search-input:focus {
+        width: 100%;
+    }
+}
+
+
+/* SECTION 19 : INDEX.PHP (AVANTAGES & BENEFITS) */
+
+.home-products-section {
+    margin-top: 2rem;
+}
+
+.home-benefits-section {
+    margin-top: 4rem;
+    background: white;
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    border: 1px solid #f0f0f0;
+}
+
+.benefits-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #1a1a1a;
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.benefit-card {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    border: 1px solid #e9ecef;
+}
+
+.benefit-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    border-color: #667eea;
+}
+
+.benefit-icon {
+    margin-bottom: 1rem;
+    color: #667eea;
+}
+
+.benefit-icon svg {
+    width: 72px;
+    height: 72px;
+}
+
+.benefit-icon-emoji {
+    font-size: 4rem;
+    color: #667eea;
+}
+
+.benefit-title {
+    color: #667eea;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.benefit-text {
+    color: #6c757d;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.placeholder-icon {
+    font-size: 4rem;
+    color: #adb5bd;
+}
+
+.placeholder-text {
+    color: #6c757d;
+    margin: 0.5rem 0 0 0;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .home-benefits-section {
+        padding: 2rem 1.5rem;
+        margin-top: 3rem;
+    }
+    
+    .benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .benefits-title {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .home-benefits-section {
+        padding: 1.5rem 1rem;
+        margin-top: 2rem;
+    }
+    
+    .benefit-card {
+        padding: 1.5rem 1rem;
+    }
+    
+    .benefit-icon svg {
+        width: 56px;
+        height: 56px;
+    }
+    
+    .benefit-icon-emoji {
+        font-size: 3rem;
+    }
+    
+    .benefit-title {
+        font-size: 1.1rem;
+    }
+    
+    .benefit-text {
+        font-size: 0.9rem;
+    }
+}
+
+
+/*  SECTION 20 : RECHERCHE SUR ARTICLES.PHP*/
+
+.search-form-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.search-form-page {
+    display: flex;
+    gap: 0.75rem;
+    background: white;
+    padding: 0.5rem;
+    border-radius: 50px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    border: 2px solid #f0f0f0;
+    transition: all 0.3s ease;
+}
+
+.search-form-page:focus-within {
+    border-color: #667eea;
+    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.2);
+}
+
+.search-input-page {
+    flex: 1;
+    border: none;
+    padding: 0.875rem 1.25rem;
+    font-size: 1rem;
+    border-radius: 50px;
+    background: transparent;
+    outline: none;
+    color: #1a1a1a;
+}
+
+.search-input-page::placeholder {
+    color: #adb5bd;
+}
+
+.search-btn-page {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 0.875rem 2rem;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.search-btn-page:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.search-btn-page:active {
+    transform: translateY(0);
+}
+
+.search-results-message {
+    text-align: center;
+    color: #6c757d;
+    margin: 1.5rem 0;
+    font-size: 1.05rem;
+}
+
+.search-results-message strong {
+    color: #667eea;
+    font-weight: 700;
+}
+
+.search-suggestions {
+    max-width: 600px;
+    margin: 3rem auto;
+    text-align: center;
+}
+
+.search-suggestions h3 {
+    color: #667eea;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.suggestion-tags {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.suggestion-tag {
+    display: inline-block;
+    padding: 0.65rem 1.5rem;
+    background: white;
+    color: #667eea;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border: 2px solid #667eea;
+    transition: all 0.2s ease;
+}
+
+.suggestion-tag:hover {
+    background: #667eea;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+@media (max-width: 768px) {
+    .search-form-container {
+        padding: 0;
+        margin: 1.5rem auto;
+    }
+    
+    .search-form-page {
+        flex-direction: column;
+        border-radius: 16px;
+        padding: 0.75rem;
+    }
+    
+    .search-input-page {
+        padding: 0.75rem 1rem;
+        border-radius: 12px;
+    }
+    
+    .search-btn-page {
+        padding: 0.75rem 1.5rem;
+        border-radius: 12px;
+        width: 100%;
+    }
+    
+    .suggestion-tags {
+        gap: 0.5rem;
+    }
+    
+    .suggestion-tag {
+        padding: 0.5rem 1.25rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .search-form-container {
+        margin: 1rem auto;
+    }
+    
+    .search-input-page {
+        font-size: 0.95rem;
+    }
+    
+    .search-btn-page {
+        font-size: 0.9rem;
+    }
+    
+    .search-suggestions h3 {
+        font-size: 1.1rem;
+    }
+    
+    .suggestion-tag {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.products-grid .card {
+    animation: fadeInUp 0.4s ease-out;
+    animation-fill-mode: both;
+}
+
+.products-grid .card:nth-child(1) { animation-delay: 0.05s; }
+.products-grid .card:nth-child(2) { animation-delay: 0.1s; }
+.products-grid .card:nth-child(3) { animation-delay: 0.15s; }
+.products-grid .card:nth-child(4) { animation-delay: 0.2s; }
+.products-grid .card:nth-child(5) { animation-delay: 0.25s; }
+.products-grid .card:nth-child(6) { animation-delay: 0.3s; }
+
+.empty-products.with-search {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+.results-count-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-left: 0.5rem;
+}
+
+.search-highlight {
+    background-color: rgba(102, 126, 234, 0.2);
+    padding: 0 0.25rem;
+    border-radius: 3px;
+    font-weight: 600;
+}
+
+.search-loading {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: #667eea;
+    font-size: 1.1rem;
+}
+
+.search-loading-spinner {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(102, 126, 234, 0.2);
+    border-top-color: #667eea;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* SECTION 21 : PAGE DE PAIEMENT (PAYMENT) */
+
+/* Container principal */
+.payment-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    background: #f5f7fa;
+}
+
+/* En-tête de la page */
+.payment-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.security-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
+.security-badge i {
+    font-size: 1.1rem;
+}
+
+.payment-title {
+    font-size: 2rem;
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.payment-title i {
+    color: #667eea;
+    margin-right: 0.5rem;
+}
+
+.payment-subtitle {
+    color: #666;
+    font-size: 1.05rem;
+    margin: 0;
+}
+
+/* Layout grid 2 colonnes */
+.payment-grid {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 2rem;
+    align-items: start;
+}
+
+/* Sélection du mode de paiement */
+.payment-methods-selector {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    margin-bottom: 1.5rem;
+}
+
+.payment-methods-selector h3 {
+    font-size: 1.2rem;
+    color: #1a1a1a;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.payment-methods-tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.payment-tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #666;
+}
+
+.payment-tab i {
+    font-size: 1.5rem;
+}
+
+.payment-tab:hover {
+    border-color: #667eea;
+    background: #f8f9ff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+}
+
+.payment-tab.active {
+    border-color: #667eea;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.payment-tab.active:hover {
+    transform: translateY(-2px);
+}
+
+/* Contenu des méthodes de paiement */
+.payment-method-content {
+    display: none;
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.payment-method-content.active {
+    display: block;
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Cartes acceptées */
+.accepted-cards {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+.accepted-cards-label {
+    font-size: 0.9rem;
+    color: #666;
+    font-weight: 500;
+}
+
+.card-logos {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.card-logos img {
+    height: 24px;
+    width: auto;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.card-logos img:hover {
+    opacity: 1;
+}
+
+/* Champ numéro de carte avec icône */
+.card-input {
+    padding-right: 60px;
+}
+
+.card-type-icon {
+    position: absolute;
+    right: 12px;
+    top: 38px;
+    width: 40px;
+    height: 25px;
+}
+
+.card-type-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Ligne avec 2 champs (Date + CVV) */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+/* Aide CVV */
+.cvv-help {
+    color: #999;
+    cursor: help;
+    margin-left: 0.25rem;
+}
+
+.cvv-help:hover {
+    color: #667eea;
+}
+
+/* Checkbox */
+.checkbox-group {
+    margin-bottom: 2rem;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    font-weight: normal;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: #667eea;
+}
+
+.checkbox-label span {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+/* Bouton de paiement */
+.btn-pay {
+    width: 100%;
+    padding: 1.2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.btn-pay:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+}
+
+.btn-pay:active {
+    transform: translateY(0);
+}
+
+.btn-pay:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-pay i {
+    font-size: 1.2rem;
+}
+
+/* Badges de sécurité */
+.security-badges {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e0e0e0;
+}
+
+.security-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.security-item i {
+    font-size: 1.5rem;
+    color: #28a745;
+}
+
+.security-item span {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.3;
+}
+
+/* Section PayPal */
+.paypal-info {
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+.paypal-logo {
+    margin-bottom: 1.5rem;
+}
+
+.paypal-logo i {
+    font-size: 5rem;
+    color: #0070ba;
+}
+
+.paypal-info h3 {
+    font-size: 1.5rem;
+    color: #1a1a1a;
+    margin-bottom: 1rem;
+}
+
+.paypal-info p {
+    color: #666;
+    font-size: 1.05rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.paypal-benefits {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+    text-align: left;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.paypal-benefits li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 0;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+.paypal-benefits i {
+    color: #28a745;
+    font-size: 1.1rem;
+}
+
+.btn-paypal {
+    width: 100%;
+    max-width: 400px;
+    padding: 1.2rem;
+    background: #0070ba;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin: 0 auto;
+    box-shadow: 0 4px 15px rgba(0, 112, 186, 0.3);
+}
+
+.btn-paypal:hover {
+    background: #005ea6;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 112, 186, 0.4);
+}
+
+.btn-paypal i {
+    font-size: 1.5rem;
+}
+
+/* Récapitulatif */
+.payment-summary-column {
+    position: relative;
+}
+
+.payment-summary {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.payment-summary.sticky {
+    position: sticky;
+    top: 2rem;
+}
+
+.summary-title {
+    font-size: 1.3rem;
+    color: #1a1a1a;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #f0f0f0;
+    font-weight: 700;
+}
+
+.summary-title i {
+    color: #667eea;
+    margin-right: 0.5rem;
+}
+
+.summary-section {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.summary-section:last-of-type {
+    border-bottom: none;
+}
+
+.summary-section h4 {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.summary-section h4 i {
+    color: #667eea;
+    margin-right: 0.5rem;
+}
+
+.delivery-address {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+}
+
+.delivery-address p {
+    margin: 0.25rem 0;
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.delivery-address strong {
+    color: #1a1a1a;
+    font-size: 1rem;
+}
+
+.modify-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #667eea;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.modify-link:hover {
+    color: #764ba2;
+    gap: 0.75rem;
+}
+
+.summary-items {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.summary-items::-webkit-scrollbar {
+    width: 6px;
+}
+
+.summary-items::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 3px;
+}
+
+.summary-items::-webkit-scrollbar-thumb {
+    background: #667eea;
+    border-radius: 3px;
+}
+
+.summary-item {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.summary-item:last-child {
+    border-bottom: none;
+}
+
+.summary-item img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.item-placeholder {
+    width: 50px;
+    height: 50px;
+    background: #e9ecef;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.item-details {
+    flex: 1;
+}
+
+.item-name {
+    font-size: 0.9rem;
+    color: #333;
+    margin: 0 0 0.25rem 0;
+    font-weight: 500;
+}
+
+.item-quantity {
+    font-size: 0.85rem;
+    color: #999;
+    margin: 0;
+}
+
+.item-price {
+    font-weight: 700;
+    color: #667eea;
+    font-size: 0.95rem;
+}
+
+.summary-totals {
+    padding: 1.5rem 0;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.free-shipping {
+    color: #28a745;
+    font-weight: 600;
+}
+
+.total-final {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 2px solid #f0f0f0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.total-final span:last-child {
+    color: #667eea;
+    font-size: 1.4rem;
+}
+
+.summary-guarantees {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #f0f0f0;
+}
+
+.guarantee-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+    color: #666;
+    font-size: 0.85rem;
+}
+
+.guarantee-item i {
+    color: #28a745;
+    font-size: 1.1rem;
+}
+
+/* Responsive payment */
+@media (max-width: 1024px) {
+    .payment-grid {
+        grid-template-columns: 1fr 350px;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .payment-container {
+        padding: 1rem;
+    }
+    
+    .payment-header {
+        padding: 1.5rem 1rem;
+    }
+    
+    .payment-title {
+        font-size: 1.5rem;
+    }
+    
+    .payment-subtitle {
+        font-size: 0.95rem;
+    }
+    
+    .payment-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .payment-methods-tabs {
+        grid-template-columns: 1fr;
+    }
+    
+    .payment-tab {
+        padding: 0.875rem;
+    }
+    
+    .payment-method-content {
+        padding: 1.5rem 1rem;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .security-badges {
+        grid-template-columns: 1fr;
+    }
+    
+    .payment-summary.sticky {
+        position: static;
+    }
+    
+    .summary-items {
+        max-height: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .payment-header {
+        padding: 1rem;
+    }
+    
+    .payment-title {
+        font-size: 1.3rem;
+    }
+    
+    .security-badge {
+        font-size: 0.8rem;
+        padding: 0.4rem 1rem;
+    }
+    
+    .payment-method-content {
+        padding: 1rem;
+    }
+    
+    .btn-pay,
+    .btn-paypal {
+        padding: 1rem;
+        font-size: 1rem;
+    }
+    
+    .accepted-cards {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.fa-spinner {
+    animation: spin 1s linear infinite;
+}
+/* Section 22 : PAGE D'INSCRIPTION (REGISTER) - À AJOUTER DANS VOTRE STYLE.CSS*/
+
+/* Container principal de l'inscription */
+.register-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Titre de la page */
+.register-title {
+    text-align: center;
+    color: #333;
+    margin-bottom: 2rem;
+}
+
+/* Liste d'erreurs */
+.error-list {
+    margin-left: 1.5rem;
+}
+
+/* Grid pour Nom et Prénom sur 2 colonnes */
+.form-row-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+/* Texte d'aide sous les champs */
+.form-help {
+    color: #666;
+    font-size: 0.9rem;
+    display: block;
+    margin-top: 0.25rem;
+}
+
+/* Bouton pleine largeur */
+.btn-full {
+    width: 100%;
+}
+
+/* Footer du formulaire (lien connexion) */
+.register-footer {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+/* Lien "Se connecter" */
+.register-link {
+    color: #667eea;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.register-link:hover {
+    text-decoration: underline;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   RESPONSIVE MOBILE
+   ───────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+    .register-container {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+    
+    /* Grid passe en 1 colonne sur mobile */
+    .form-row-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .register-container {
+        padding: 1rem;
+    }
+    
+    .register-title {
+        font-size: 1.5rem;
+    }
+    
+    
+    
+}
+.alert-success { display: none; }
+.alert-error { display: none !important; }
+/* ========================================================================
+   ADMIN - GESTION DES COMMANDES (Style Professionnel)
+   Fichier: assets/css/admin-orders.css
+   ======================================================================== */
+
+/* Container principal */
+.admin-container {
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   HEADER AVEC BOUTON RETOUR À DROITE
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.admin-header h1 {
+    color: #ff6b35;
+    font-size: 2rem;
+    margin: 0;
+    font-weight: bold;
+}
+
+/* Bouton Retour à droite */
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: #667eea;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.btn-back:hover {
+    background: #5568d3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   TABLE DES COMMANDES
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.orders-table-wrapper {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table thead {
+    background: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.admin-table th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.admin-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+    vertical-align: middle;
+}
+
+.admin-table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.admin-table tbody tr:hover {
+    background: #f8f9fa;
+}
+
+.admin-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* ID de commande */
+.order-id {
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    color: #667eea;
+    font-size: 0.95rem;
+}
+
+/* Info client */
+.customer-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.customer-name {
+    font-weight: 600;
+    color: #333;
+}
+
+.customer-email {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+/* Montant */
+.order-amount {
+    font-weight: bold;
+    color: #28a745;
+    font-size: 1.1rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   BADGES DE STATUT
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* 1. Base commune pour tous les badges */
+.status-badge {
+    display: inline-block !important;
+    padding: 6px 15px !important;
+    border-radius: 20px !important;
+    font-size: 0.85rem !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    text-align: center !important;
+    min-width: 110px !important;
+    border: none !important; /* On enlève la bordure rouge de test */
+}
+
+/* 2. Le badge EN COURS (Orange Fashion) */
+.status-en_cours {
+    background-color: #ff6e14 !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 10px rgba(255, 110, 20, 0.3) !important;
+}
+
+/* 3. Le badge PAYÉE (Vert) */
+.status-payee, .status-payée {
+    background-color: #28a745 !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3) !important;
+}
+
+/* 4. Le badge LIVRÉE (Bleu ou Vert clair) */
+.status-livree, .status-livrée {
+    background-color: #007bff !important;
+    color: #ffffff !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   BOUTONS D'ACTION (STYLE IMAGE 3)
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.action-buttons {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: flex-start;
+}
+
+/* Bouton Modifier (Orange arrondi) */
+.btn-modifier {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background: #ff6b35;
+    color: #000;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+    text-align: center;
+}
+
+.btn-modifier:hover {
+    background: #ff5722;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 107, 53, 0.4);
+}
+
+/* Bouton Supprimer (Rouge) */
+.btn-supprimer {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: #f44336;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(244, 67, 54, 0.3);
+    text-align: center;
+}
+
+.btn-supprimer:hover {
+    background: #d32f2f;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(244, 67, 54, 0.4);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   ÉTAT VIDE
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.empty-icon {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+}
+
+.empty-state h3 {
+    color: #333;
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.empty-state p {
+    color: #666;
+    font-size: 1rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+    .admin-container {
+        padding: 1rem;
+    }
+    
+    .admin-header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+    
+    .admin-header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .orders-table-wrapper {
+        overflow-x: auto;
+    }
+    
+    .admin-table {
+        min-width: 1000px;
+    }
+    
+    .admin-table th,
+    .admin-table td {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .btn-modifier,
+    .btn-supprimer {
+        width: 100%;
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .admin-header h1 {
+        font-size: 1.3rem;
+    }
+    
+    .btn-back {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+/* ========================================================================
+   ADMIN - MODIFICATION DE COMMANDE
+   Fichier: assets/css/order-edit.css
+   ======================================================================== */
+
+/* Container principal */
+.edit-container {
+    max-width: 600px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Titre */
+.edit-container h1 {
+    color: #ff6b35;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    font-weight: bold;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   INFORMATIONS DE LA COMMANDE
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.order-info {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    border-left: 4px solid #667eea;
+}
+
+.order-info p {
+    margin: 0.75rem 0;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.order-info p:first-child {
+    margin-top: 0;
+}
+
+.order-info p:last-child {
+    margin-bottom: 0;
+}
+
+.order-info strong {
+    color: #333;
+    font-weight: 600;
+    margin-right: 0.5rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   FORMULAIRE
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-size: 1rem;
+}
+
+.form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.form-group select:hover {
+    border-color: #667eea;
+}
+
+.form-group select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   BOUTONS D'ACTION
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 2px solid #eee;
+}
+
+/* Bouton Enregistrer (Orange arrondi) */
+.btn-save {
+    padding: 0.75rem 2rem;
+    background: #ff6b35;
+    color: #000;
+    border: none;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-save:hover {
+    background: #ff5722;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 107, 53, 0.4);
+}
+
+.btn-save:active {
+    transform: translateY(0);
+}
+
+/* Bouton Annuler (Gris) */
+.btn-cancel {
+    padding: 0.75rem 2rem;
+    background: #6c757d;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    display: inline-block;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.btn-cancel:hover {
+    background: #5a6268;
+    transform: translateY(-2px);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+    .edit-container {
+        margin: 2rem 1rem;
+        padding: 1.5rem;
+    }
+    
+    .edit-container h1 {
+        font-size: 1.5rem;
+    }
+    
+    .order-info {
+        padding: 1rem;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .btn-save,
+    .btn-cancel {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .edit-container {
+        margin: 1rem 0.5rem;
+        padding: 1rem;
+    }
+    
+    .edit-container h1 {
+        font-size: 1.3rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .order-info p {
+        font-size: 0.9rem;
+    }
+    
+    .form-group label {
+        font-size: 0.95rem;
+    }
+    
+    .btn-save,
+    .btn-cancel {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.95rem;
+    }
+}
+/* ========================================================================
+   ADMIN DASHBOARD - MODERNE
+   Fichier: assets/css/admin-dashboard.css
+   ======================================================================== */
+
+/* Container principal */
+.admin-dashboard-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Titre du dashboard */
+.admin-dashboard-title {
+    text-align: center;
+    color: #333;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   CARTES DE STATISTIQUES
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* Grid des cartes */
+.dashboard-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+/* Carte de base */
+.stat-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+/* Carte avec alerte (stock faible) */
+.stat-card-warning {
+    border: 2px solid #ffc107;
+    background: linear-gradient(135deg, #fff9e6 0%, #ffffff 100%);
+}
+
+/* Titre de la carte */
+.stat-title {
+    font-size: 1.1rem;
+    color: #666;
+    margin: 0 0 1rem 0;
+    font-weight: 600;
+}
+
+/* Nombre principal */
+.stat-number {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #333;
+    margin: 0.5rem 0;
+}
+
+/* Nombre avec alerte danger */
+.stat-number-danger {
+    color: #dc3545 !important;
+}
+
+/* Label descriptif */
+.stat-label {
+    color: #999;
+    font-size: 0.9rem;
+    margin: 0.5rem 0 1.5rem 0;
+}
+
+/* Bouton Gérer */
+.stat-btn {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background: #ff6b35;
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+}
+
+.stat-btn:hover {
+    background: #e55a2b;
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+}
+
+/* Bouton Gérer danger (pour stock faible) */
+.stat-btn-danger {
+    background: #dc3545;
+    box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
+}
+
+.stat-btn-danger:hover {
+    background: #c82333;
+    box-shadow: 0 6px 20px rgba(220, 53, 69, 0.4);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   SECTION ACCÈS RAPIDE
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.quick-access-section {
+    margin-top: 3rem;
+}
+
+.quick-access-title {
+    color: #333;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.quick-access-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.quick-access-card {
+    text-decoration: none;
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    display: block;
+}
+
+.quick-access-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.quick-access-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.quick-access-heading {
+    color: #333;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.quick-access-text {
+    color: #666;
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 1200px) {
+    .dashboard-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .admin-dashboard-container {
+        padding: 1rem;
+    }
+    
+    .admin-dashboard-title {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .dashboard-stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .stat-card {
+        padding: 1.5rem;
+    }
+    
+    .stat-number {
+        font-size: 2.5rem;
+    }
+    
+    .quick-access-section {
+        margin-top: 2rem;
+    }
+    
+    .quick-access-title {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+    }
+    
+    .quick-access-grid {
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .stat-btn {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}
+/* ========================================================================
+   ADMIN - GESTION DU STOCK (Boutons arrondis identiques)
+   Fichier: assets/css/admin-stock.css
+   ======================================================================== */
+
+/* Container principal */
+.admin-container {
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+/* Header */
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.admin-header h1 {
+    color: #ff6b35;
+    font-size: 2rem;
+    margin: 0;
+    font-weight: bold;
+}
+
+/* Bouton Retour */
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: #667eea;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.btn-back:hover {
+    background: #5568d3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   STATISTIQUES
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.stock-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-box {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: transform 0.2s ease;
+}
+
+.stat-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.stat-box-danger { 
+    border-left: 4px solid #dc3545; 
+}
+
+.stat-box-warning { 
+    border-left: 4px solid #ffc107; 
+}
+
+.stat-box-success { 
+    border-left: 4px solid #28a745; 
+}
+
+.stat-icon {
+    font-size: 2.5rem;
+}
+
+.stat-info {
+    flex: 1;
+}
+
+.stat-value {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.25rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   TABLE DU STOCK
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.stock-table-wrapper {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table thead {
+    background: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.admin-table th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.admin-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+    vertical-align: middle;
+}
+
+.admin-table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.admin-table tbody tr:hover {
+    background: #f8f9fa;
+}
+
+.admin-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* ID produit */
+.product-id {
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    color: #667eea;
+    font-size: 0.95rem;
+}
+
+/* Info produit */
+.product-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-name {
+    font-weight: 600;
+    color: #333;
+}
+
+/* Prix */
+.product-price {
+    font-weight: bold;
+    color: #28a745;
+    font-size: 1.1rem;
+}
+
+/* Quantité */
+.stock-quantity {
+    text-align: center;
+}
+
+.quantity-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.quantity-badge.stock-rupture {
+    background: #fee;
+    color: #dc3545;
+    border: 2px solid #dc3545;
+}
+
+.quantity-badge.stock-critique {
+    background: #ffeeee;
+    color: #ff6b6b;
+    border: 2px solid #ff6b6b;
+}
+
+.quantity-badge.stock-faible {
+    background: #fff8e1;
+    color: #ff9800;
+    border: 2px solid #ff9800;
+}
+
+.quantity-badge.stock-ok {
+    background: #e8f5e9;
+    color: #28a745;
+    border: 2px solid #28a745;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   BADGES DE STATUT
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.status-badge {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.status-stock-rupture {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.status-stock-critique {
+    background: #ffeeee;
+    color: #c82333;
+}
+
+.status-stock-faible {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.status-stock-ok {
+    background: #d4edda;
+    color: #155724;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   BOUTONS D'ACTION (MÊME FORME ARRONDIE)
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.action-buttons {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: flex-start;
+}
+
+/* Bouton Modifier (Orange arrondi) */
+.btn-modifier {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background: #ff6b35;
+    color: #000;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+    text-align: center;
+}
+
+.btn-modifier:hover {
+    background: #ff5722;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 107, 53, 0.4);
+}
+
+/* Bouton Supprimer (Rouge arrondi - MÊME FORME) */
+.btn-supprimer {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background: #f44336;
+    color: white;
+    text-decoration: none;
+    border-radius: 50px; /* ← CHANGÉ : Même arrondi que Modifier */
+    font-weight: bold; /* ← CHANGÉ : Bold comme Modifier */
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(244, 67, 54, 0.3); /* ← CHANGÉ : Même ombre que Modifier */
+    text-align: center;
+}
+
+.btn-supprimer:hover {
+    background: #d32f2f;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(244, 67, 54, 0.4);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   FORMULAIRE DE MODIFICATION
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.edit-container {
+    max-width: 600px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.edit-container h1 {
+    color: #ff6b35;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    font-weight: bold;
+}
+
+.product-info-box {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    border-left: 4px solid #667eea;
+}
+
+.product-info-box p {
+    margin: 0.75rem 0;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.product-info-box strong {
+    color: #333;
+    font-weight: 600;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-size: 1rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 2px solid #eee;
+}
+
+.btn-save {
+    padding: 0.75rem 2rem;
+    background: #ff6b35;
+    color: #000;
+    border: none;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-save:hover {
+    background: #ff5722;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 107, 53, 0.4);
+}
+
+.btn-cancel {
+    padding: 0.75rem 2rem;
+    background: #6c757d;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    display: inline-block;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.btn-cancel:hover {
+    background: #5a6268;
+    transform: translateY(-2px);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   ÉTAT VIDE
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.empty-icon {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+}
+
+.empty-state h3 {
+    color: #333;
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.empty-state p {
+    color: #666;
+    font-size: 1rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 1200px) {
+    .stock-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .admin-container {
+        padding: 1rem;
+    }
+    
+    .admin-header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+    
+    .admin-header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .stock-stats {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .stock-table-wrapper {
+        overflow-x: auto;
+    }
+    
+    .admin-table {
+        min-width: 900px;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .btn-modifier,
+    .btn-supprimer {
+        width: 100%;
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
+    }
+    
+    .edit-container {
+        margin: 2rem 1rem;
+        padding: 1.5rem;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .btn-save,
+    .btn-cancel {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .admin-header h1 {
+        font-size: 1.3rem;
+    }
+    
+    .stat-value {
+        font-size: 1.5rem;
+    }
+}
+/* ========================================================================
+   ADMIN - GESTION DES UTILISATEURS
+   Fichier: assets/css/admin-users.css
+   ======================================================================== */
+
+/* Container principal */
+.admin-container {
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+/* Header */
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.admin-header h1 {
+    color: #ff6b35;
+    font-size: 2rem;
+    margin: 0;
+    font-weight: bold;
+}
+
+/* Bouton Retour */
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: #667eea;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.btn-back:hover {
+    background: #5568d3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   STATISTIQUES
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.users-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-box {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: transform 0.2s ease;
+}
+
+.stat-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.stat-icon {
+    font-size: 2.5rem;
+}
+
+.stat-info {
+    flex: 1;
+}
+
+.stat-value {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.25rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   TABLE DES UTILISATEURS
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.users-table-wrapper {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table thead {
+    background: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.admin-table th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.admin-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+    vertical-align: middle;
+}
+
+.admin-table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.admin-table tbody tr:hover {
+    background: #f8f9fa;
+}
+
+.admin-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Ligne admin (bleu clair) */
+.admin-row {
+    background: #e7f3ff !important;
+}
+
+.admin-row:hover {
+    background: #d4e9ff !important;
+}
+
+/* ID utilisateur */
+.user-id {
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    color: #667eea;
+    font-size: 0.95rem;
+}
+
+/* Info utilisateur */
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.user-name {
+    font-weight: 600;
+    color: #333;
+}
+
+.you-badge {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    background: #667eea;
+    color: white;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* Email */
+.user-email {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Date */
+.user-date {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   BADGES DE RÔLE
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.role-badge {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.role-admin {
+    background: #e7f3ff;
+    color: #0c5460;
+}
+
+.role-user {
+    background: #f8f9fa;
+    color: #495057;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   BOUTONS D'ACTION (RÔLE + SUPPRIMER - MÊME FORME)
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.action-buttons {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: flex-start;
+}
+
+/* Bouton Rôle (Bleu arrondi) */
+.btn-role {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background: #667eea;
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    text-align: center;
+}
+
+.btn-role:hover {
+    background: #5568d3;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+}
+
+/* Bouton Supprimer (Rouge arrondi - MÊME FORME) */
+.btn-supprimer {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background: #f44336;
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(244, 67, 54, 0.3);
+    text-align: center;
+}
+
+.btn-supprimer:hover {
+    background: #d32f2f;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(244, 67, 54, 0.4);
+}
+
+/* Texte muted (pour "vous") */
+.text-muted {
+    color: #999;
+    font-style: italic;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   INFO BOX
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.info-box {
+    margin-top: 1.5rem;
+    padding: 1rem 1.5rem;
+    background: #e7f3ff;
+    border-left: 4px solid #667eea;
+    border-radius: 8px;
+}
+
+.info-box strong {
+    color: #0c5460;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   FORMULAIRE DE MODIFICATION DE RÔLE
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.edit-container {
+    max-width: 600px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.edit-container h1 {
+    color: #ff6b35;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    font-weight: bold;
+}
+
+.user-info-box {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    border-left: 4px solid #667eea;
+}
+
+.user-info-box p {
+    margin: 0.75rem 0;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.user-info-box strong {
+    color: #333;
+    font-weight: 600;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-size: 1rem;
+}
+
+.form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.form-group select:hover {
+    border-color: #667eea;
+}
+
+.form-group select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Avertissement */
+.role-warning {
+    background: #fff3cd;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    border-left: 4px solid #ffc107;
+}
+
+.role-warning strong {
+    color: #856404;
+}
+
+.role-warning ul {
+    margin: 0.5rem 0 0 1.5rem;
+    color: #856404;
+}
+
+.role-warning li {
+    margin: 0.25rem 0;
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 2px solid #eee;
+}
+
+.btn-save {
+    padding: 0.75rem 2rem;
+    background: #ff6b35;
+    color: #000;
+    border: none;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-save:hover {
+    background: #ff5722;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 107, 53, 0.4);
+}
+
+.btn-cancel {
+    padding: 0.75rem 2rem;
+    background: #6c757d;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    display: inline-block;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.btn-cancel:hover {
+    background: #5a6268;
+    transform: translateY(-2px);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   ÉTAT VIDE
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.empty-icon {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+}
+
+.empty-state h3 {
+    color: #333;
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.empty-state p {
+    color: #666;
+    font-size: 1rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 1200px) {
+    .users-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .admin-container {
+        padding: 1rem;
+    }
+    
+    .admin-header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+    
+    .admin-header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .users-stats {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .users-table-wrapper {
+        overflow-x: auto;
+    }
+    
+    .admin-table {
+        min-width: 1000px;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .btn-role,
+    .btn-supprimer {
+        width: 100%;
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
+    }
+    
+    .edit-container {
+        margin: 2rem 1rem;
+        padding: 1.5rem;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .btn-save,
+    .btn-cancel {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .admin-header h1 {
+        font-size: 1.3rem;
+    }
+    
+    .stat-value {
+        font-size: 1.5rem;
+    }
+}
+/* ========================================================================
+   ADMIN - GESTION DES PRODUITS (BOUTONS TAILLE ÉGALE)
+   À ajouter à la fin de style.css
+   ======================================================================== */
+
+/* Container principal */
+.products-table-wrapper {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   BOUTONS D'ACTION PRODUCTS 
+   MODIFIER + SUPPRIMER - MÊME FORME ET MÊME TAILLE
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* Bouton Modifier (Orange arrondi) */
+.btn-modifier {
+    display: inline-block;
+    min-width: 140px;              /* ← TAILLE MINIMALE IDENTIQUE */
+    padding: 0.75rem 2rem;
+    background: #ff6b35;
+    color: #000;
+    text-decoration: none;
+    border-radius: 50px;           /* ← Très arrondi */
+    font-weight: bold;             /* ← Texte en gras */
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+    text-align: center;
+}
+
+.btn-modifier:hover {
+    background: #ff5722;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 107, 53, 0.4);
+}
+
+/* Bouton Supprimer (Rouge arrondi - MÊME TAILLE ET FORME) */
+.btn-supprimer {
+    display: inline-block;
+    min-width: 140px;              /* ← MÊME TAILLE que Modifier */
+    padding: 0.75rem 2rem;         /* ← MÊME padding */
+    background: #f44336;
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;           /* ← MÊME arrondi que Modifier */
+    font-weight: bold;             /* ← MÊME épaisseur que Modifier */
+    font-size: 0.95rem;            /* ← MÊME taille de texte */
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(244, 67, 54, 0.3); /* ← MÊME ombre */
+    text-align: center;
+}
+
+.btn-supprimer:hover {
+    background: #d32f2f;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(244, 67, 54, 0.4);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+    .action-buttons {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .btn-modifier,
+    .btn-supprimer {
+        width: 100%;              /* Pleine largeur sur mobile */
+        min-width: auto;          /* Supprime min-width sur mobile */
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
+    }
+}
+/* ========================================================================
+   HARMONISATION FINALE ET FORCÉE (CORRECTION PRIORITAIRE)
+   ======================================================================== */
+
+/* On cible spécifiquement les boutons dans le tableau admin pour écraser tout le reste */
+table.admin-table td .btn-modifier, 
+table.admin-table td .btn-supprimer {
+    /* Forme et Taille */
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 140px !important;    /* Largeur identique forcée */
+    height: 45px !important;       /* Hauteur identique forcée */
+    border-radius: 50px !important; /* Arrondi total forcé */
+    
+    /* Texte */
+    font-weight: 800 !important;
+    font-size: 0.9rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    text-decoration: none !important;
+    
+    /* Espacement */
+    margin: 5px !important;
+    padding: 0 20px !important;
+    border: none !important;
+}
+
+/* Couleur spécifique Modifier */
+table.admin-table td .btn-modifier {
+    background: #ff6e14 !important; /* Orange original */
+    color: #000 !important;
+    box-shadow: 0 4px 10px rgba(255, 110, 20, 0.3) !important;
+}
+
+/* Couleur spécifique Supprimer */
+table.admin-table td .btn-supprimer {
+    background: #ff3b30 !important; /* Rouge original */
+    color: #fff !important;
+    box-shadow: 0 4px 10px rgba(255, 59, 48, 0.3) !important;
+}
+
+/* Effet au survol pour les deux */
+table.admin-table td .btn-modifier:hover,
+table.admin-table td .btn-supprimer:hover {
+    transform: translateY(-2px) !important;
+    filter: brightness(1.1) !important;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2) !important;
+}
+/* ========================================================================
+   ADMIN PRODUCTS - CSS PROPRE (Sans styles inline)
+   Fichier: assets/css/admin-products-clean.css
+   ======================================================================== */
+
+/* Container principal */
+.products-admin-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Header avec titre et bouton */
+.products-admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.products-admin-header h2 {
+    color: #333;
+    margin: 0;
+}
+
+/* Messages de succès */
+.products-success-message {
+    background: #d4edda;
+    color: #155724;
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    border: 1px solid #c3e6cb;
+}
+
+/* Messages d'erreur */
+.products-error-message {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    border: 1px solid #f5c6cb;
+}
+
+/* Table container */
+.products-table-container {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+/* Table */
+.products-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.products-table thead {
+    background: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.products-table th {
+    padding: 1rem;
+    text-align: left;
+    color: #495057;
+    font-weight: 600;
+}
+
+.products-table th.text-center {
+    text-align: center;
+}
+
+.products-table tbody tr {
+    border-bottom: 1px solid #dee2e6;
+    transition: background-color 0.2s ease;
+}
+
+.products-table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.products-table td {
+    padding: 1rem;
+    vertical-align: middle;
+}
+
+/* Image produit */
+.product-image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.product-image-placeholder {
+    width: 50px;
+    height: 50px;
+    background: #e9ecef;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6c757d;
+    font-size: 1.5rem;
+}
+
+/* Nom du produit */
+.product-name {
+    font-weight: 600;
+}
+
+.product-description {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+/* Prix */
+.product-price {
+    font-weight: 600;
+}
+
+/* Stock avec couleurs */
+.product-stock {
+    font-weight: bold;
+}
+
+.product-stock.stock-low {
+    color: #dc3545;
+}
+
+.product-stock.stock-warning {
+    color: #ffc107;
+}
+
+.product-stock.stock-ok {
+    color: #28a745;
+}
+
+/* Actions - Container des boutons */
+.products-actions {
+    text-align: center;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   BOUTONS MODIFIER ET SUPPRIMER - FORME IDENTIQUE ARRONDIE
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* Bouton Modifier (Orange arrondi) */
+.products-table .btn-modifier,
+.products-table a.btn-modifier {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 140px !important;
+    padding: 0.75rem 2rem !important;
+    background: #ff6b35 !important;
+    color: #000 !important;
+    text-decoration: none !important;
+    border-radius: 50px !important;  /* ⭐ TRÈS ARRONDI */
+    font-weight: bold !important;
+    font-size: 0.95rem !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3) !important;
+    border: none !important;
+    cursor: pointer !important;
+}
+
+.products-table .btn-modifier:hover,
+.products-table a.btn-modifier:hover {
+    background: #ff5722 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 16px rgba(255, 107, 53, 0.4) !important;
+}
+
+/* Bouton Supprimer (Rouge arrondi - MÊME FORME) */
+.products-table .btn-supprimer,
+.products-table a.btn-supprimer {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 140px !important;         /* ⭐ MÊME largeur */
+    padding: 0.75rem 2rem !important;    /* ⭐ MÊME padding */
+    background: #f44336 !important;
+    color: white !important;
+    text-decoration: none !important;
+    border-radius: 50px !important;      /* ⭐ MÊME arrondi */
+    font-weight: bold !important;        /* ⭐ MÊME poids */
+    font-size: 0.95rem !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 12px rgba(244, 67, 54, 0.3) !important;
+    border: none !important;
+    cursor: pointer !important;
+}
+
+.products-table .btn-supprimer:hover,
+.products-table a.btn-supprimer:hover {
+    background: #d32f2f !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 16px rgba(244, 67, 54, 0.4) !important;
+}
+
+/* État vide */
+.products-empty-state {
+    padding: 2rem;
+    text-align: center;
+    color: #6c757d;
+}
+
+.products-empty-state a {
+    color: #007bff;
+}
+
+/* Footer avec bouton retour */
+.products-footer {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+    .products-admin-container {
+        padding: 1rem;
+    }
+    
+    .products-admin-header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+    
+    .products-table-container {
+        overflow-x: auto;
+    }
+    
+    .products-table {
+        min-width: 900px;
+    }
+    
+    .products-actions {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .products-table .btn-modifier,
+    .products-table .btn-supprimer {
+        width: 100% !important;
+        min-width: auto !important;
+        padding: 0.6rem 1rem !important;
+        font-size: 0.85rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .products-admin-header h2 {
+        font-size: 1.3rem;
+    }
+}
+/* ========================================================================
+   ADMIN FORMS - VERSION ISOLÉE (Ne cache plus les autres boutons)
+   ======================================================================== */
+
+/* ========================================================================
+   ADMIN FORMS - VERSION ULTRA-ISOLÉE (Ne perturbe aucune autre page)
+   ======================================================================== */
+
+/* Note : Assurez-vous que votre conteneur HTML a bien la classe 'admin-forms-page' */
+
+.admin-forms-page .admin-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+.admin-forms-page .form-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    border: 1px solid #f0f0f0;
+    animation: fadeInUpForm 0.5s ease;
+}
+
+/* --- CHAMPS DE SAISIE ISOLÉS --- */
+.admin-forms-page .form-control {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 1px solid #e0e0e0; 
+    border-radius: 10px;
+    font-size: 1rem;
+    background: #fafafa;
+    transition: all 0.3s ease;
+}
+
+.admin-forms-page .form-control:focus {
+    outline: none;
+    border-color: #667eea; 
+    background: white;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* --- BOUTONS DU FORMULAIRE UNIQUEMENT --- */
+.admin-forms-page .form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 2px solid #f0f0f0;
+    justify-content: flex-end;
+}
+
+/* Bouton Enregistrer (Cible uniquement le formulaire) */
+.admin-forms-page .btn-submit {
+    padding: 0.75rem 1.5rem !important;
+    background: #ff6b35 !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 8px !important;
+    font-size: 0.95rem !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    white-space: nowrap !important;
+    width: auto !important; /* Empêche de prendre toute la largeur */
+}
+
+/* Bouton Annuler (Cible uniquement le formulaire) */
+.admin-forms-page .btn-secondary {
+    padding: 0.75rem 1.5rem !important;
+    background: #6c757d !important;
+    color: white !important;
+    text-decoration: none !important;
+    border-radius: 8px !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    display: inline-flex !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+    width: auto !important;
+}
+
+/* --- APERÇU IMAGE --- */
+.admin-forms-page .preview-img {
+    width: 250px; /* Plus grand comme demandé */
+    height: auto;
+    max-height: 300px;
+    object-fit: contain;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    margin-top: 1rem;
+    display: block;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .admin-forms-page .form-actions {
+        flex-direction: column;
+    }
+    .admin-forms-page .btn-submit, 
+    .admin-forms-page .btn-secondary {
+        width: 100% !important;
+        justify-content: center !important;
+    }
+}
+
+@keyframes fadeInUpForm {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
