@@ -53,7 +53,7 @@ Fashion Shop est une application web e-commerce complète développée en PHP. C
 #### 1. Cloner le projet
 
 ```bash
-git clone https://github.com/votre-abdulazizo2001 /ecommerce.git
+git clone https://github.com/abdulazizo2001/Ecommerce.git
 ```
 
 #### 2. Placer le projet dans XAMPP
@@ -92,7 +92,7 @@ Le fichier de configuration est déjà paramétré pour XAMPP par défaut dans `
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'fashion_shop');
 define('DB_USER', 'root');
-define('DB_PASS', ''); // Vide par défaut sur XAMPP
+define('DB_PASS', ''); 
 ```
 
 Si vous avez modifié votre configuration MySQL, ajustez ces valeurs.
@@ -103,12 +103,6 @@ Ouvrez votre navigateur et accédez à :
 ```
  http://localhost/ecommerce/
 ```
-
-## 👤 Comptes de Test
-
-### Compte Administrateur
-- **Email** : ` test@admin.com`
-- **Mot de passe** : `test123`
 
 ### Créer un compte utilisateur
 Vous pouvez créer un nouveau compte utilisateur via la page d'inscription.
@@ -215,9 +209,6 @@ Le projet implémente plusieurs mesures de sécurité :
 
 Projet académique réalisé dans le cadre d'un cours de développement web PHP/MySQL.
 
-## 📅 Date de Rendu
-
-**Date limite** : 15 février 2026 à 23h59
 
 ## 📄 Licence
 
